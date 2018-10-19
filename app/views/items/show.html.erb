@@ -1,0 +1,42 @@
+<div class="item-show-area">
+  <span class="content">
+  <h2><%= @item.name %></h2>
+  <div class="image_area">
+    <%= image_tag @item.image.url if @item.image? %>
+  </div>
+  <div class="content_area">
+    <%= @item.content %>
+    <h3><%= @item.price %>円</h3>
+  </div>
+  </span>
+  <span class="timestamp">
+  <%= time_ago_in_words(@item.created_at) %>前に出品
+  </span>
+  出品者 <%= link_to "#{@item.user.username}", user_page_path(@item.user.id) %>さん
+  <% if current_user?(@item.user) %>
+  <%= link_to "編集", item_edit_path(@item.id) %>
+  <%= link_to "削除", @item, method: :delete, data: { confirm: "本当に削除しますか？" } %>
+  <% end %>
+</div>
+<div class="buy-area">
+  <%= form_for @transaction, url: transaction_path do |f| %>
+    <%= f.hidden_field :item_id, value: @item.id %>
+    <%= f.hidden_field :buyer_id, value: current_user.id %>
+    <%= f.hidden_field :seller_id, value: @item.user.id %>
+    <%= f.submit "予約する", class: "btn btn-primary", data: { confirm: "予約してよろしいですか？" } %>
+  <% end %>
+</div>
+<div class="comment-show-area">
+  <% @item.comment.each do |comment| %>
+    <p><%= link_to "#{comment.user.username}" , @user %>さん： <%= comment.body %>
+    <%= link_to "削除", [@item,comment], method: :delete, data: { confirm: "本当に削除しますか？" } if current_user?(comment.user) %></p>
+  <% end %>
+</div>
+<div class="comment-form-area">
+  <%= form_for([@item , @comment]) do |f| %>
+    <div class="field">
+      <%= f.text_area :body, placeholder: "コメントを入力" %>
+    </div>
+    <%= f.submit "送信", class: "btn btn-primary" %>
+  <% end %>
+</div>

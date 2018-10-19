@@ -1,0 +1,12 @@
+<%= form_for(@item) do |f| %>
+  <%= render 'items/error_message' %>
+  <div class="field"s>
+    <ul class="new_form_area">
+      <li>画像<%= f.file_field :image %></li>
+      <li>商品名<%= f.text_field :name, placeholder: "商品名を正確に記入してください" %></li>
+      <li>説明<%= f.text_area :content, placeholder: "商品の説明を記入してください" %></li>
+      <li>値段<%= f.number_field :price, placeholder: "金額を半角数字で入力してください" %></li>
+    </ul>
+  </div>
+  <%= f.submit "Post", class: "btn btn-primary", data: { confirm: "出品してよろしいですか？" } %>
+<% end %>

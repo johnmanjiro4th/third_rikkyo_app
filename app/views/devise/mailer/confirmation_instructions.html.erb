@@ -1,0 +1,6 @@
+<p>Welcome <%= @username %>!</p>
+
+<p>メールアドレスの認証はまだ完了していません。</p>
+<p>以下のリンクにアクセスしていただくと、認証が完了します。</p>
+
+<p><%= link_to 'メールアドレスを認証する:', confirmation_url(@resource, confirmation_token: @token) %></p>

@@ -1,0 +1,18 @@
+<div class="transaction-comment-area">
+  <div class="comment-show-area">
+    <% @transaction.item_transaction_comment.each do |comment| %>
+      <p>
+        <%= link_to "#{comment.user.username}" , user_page_path(comment.user.id) %>さん：<%= comment.body %>
+        <%= link_to "削除", transaction_comment_delete_path(comment.id), data: { confirm: "本当に削除しますか？" } if current_user?(comment.user) %>
+      </p>
+    <% end %>
+  </div>
+  <div class="comment-form">
+    <%= form_for @item_transaction_comment, url: transaction_comment_path(@transaction.id) do |f| %>
+      <div class="field">
+        <%= f.text_field :body, placeholder: "トークを入力" %>
+      </div>
+      <%= f.submit "送信", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>

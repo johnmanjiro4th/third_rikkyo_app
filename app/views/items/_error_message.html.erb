@@ -1,0 +1,12 @@
+<% if @item.errors.any? %>
+  <div id="error_explanation">
+    <div class="alert alert-danger">
+      未入力または無効な表記が<%= @item.errors.count %>点あります
+    </div>
+    <ul>
+    <% @item.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>

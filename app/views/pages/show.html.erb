@@ -1,0 +1,12 @@
+<div class="col-md-12">
+  <h1>この出品者の商品</h1>
+  <% if @user.item.any? %>
+    <h3>現在<%= @user.item.count %>個出品中です！</h3>
+    <ol class="microposts">
+      <%= render @items %>
+    </ol>
+    <%= will_paginate @items %>
+  <% else %>
+    <h3>まだ出品してないよ〜</h3>
+  <% end %>
+</div>

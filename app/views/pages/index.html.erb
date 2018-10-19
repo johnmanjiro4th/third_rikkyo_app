@@ -1,0 +1,19 @@
+<div class="col-md-12">
+  <p>商品検索</p>
+  <%= form_tag root_path, :method => 'get' do %>
+    <p>
+      <%= text_field_tag :search, params[:search], placeholder: "キーワードを入力" %>
+      <%= submit_tag "検索", :name => nil %>
+    </p>
+  <% end %>
+  <h1>現在募集中の商品</h1>
+  <% if @items.any? %>
+    <h3>現在<%= @items.count %>個の商品が募集中！</h3>
+    <ol class="microposts">
+      <%= render @items %>
+    </ol>
+    <%= will_paginate @items %>
+  <% else %>
+    <h3>まだ出品してないよ〜</h3>
+  <% end %>
+</div>
