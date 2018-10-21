@@ -23,8 +23,8 @@ class Item < ApplicationRecord
 
   # アップロードされた画像のサイズをバリデーションする
   def image_size
-    if image.size > 5.megabytes
-      errors.add(:image, "should be less than 5MB")
+    if image.size > 10.megabytes
+      errors.add(:image, "should be less than 10MB")
     end
   end
 end
