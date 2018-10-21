@@ -8,17 +8,9 @@
     <h3><%= @item.price %>円</h3>
   </div>
   <div class="panel-footer">
-    <span class="timestamp">
-    <%= time_ago_in_words(@item.created_at) %>前に出品
-    </span>
     <div class="buyer-name-area">
+      <%= time_ago_in_words(@item.created_at) %>前に出品
       出品者 <%= link_to "#{@item.user.username}", user_page_path(@item.user.id) %>さん
-    </div>
-    <div class="edit-area">
-      <% if current_user?(@item.user) %>
-      <%= link_to "編集", item_edit_path(@item.id) %>
-      <%= link_to "削除", @item, method: :delete, data: { confirm: "本当に削除しますか？" } %>
-      <% end %>
     </div>
     <div class="buy-area">
       <%= form_for @transaction, url: transaction_path do |f| %>
@@ -26,6 +18,12 @@
         <%= f.hidden_field :buyer_id, value: current_user.id %>
         <%= f.hidden_field :seller_id, value: @item.user.id %>
         <%= f.submit "予約", class: "btn btn-primary reserve-button", data: { confirm: "予約してよろしいですか？" } %>
+      <% end %>
+    </div>
+    <div class="edit-area">
+      <% if current_user?(@item.user) %>
+      <%= link_to "編集", item_edit_path(@item.id) %>
+      <%= link_to "削除", @item, method: :delete, data: { confirm: "本当に削除しますか？" } %>
       <% end %>
     </div>
   </div>

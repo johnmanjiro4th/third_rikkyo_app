@@ -1,12 +1,14 @@
 <div class="buy_item_area">
-  買った商品
+  あなたが買った商品
   <% @buy_transactions.each do |transaction| %>
-    <%= link_to "#{transaction.id}", transaction_show_path(transaction.id) %>
+    <% @buy_item = Item.find(transaction.item_id) %>
+    <%= link_to "#{@buy_item.name}", transaction_show_path(transaction.id) %>
   <% end %>
 </div>
 <div class="sell_item_area">
-  売った商品
+  あなたが売った商品
   <% @sell_transactions.each do |transaction| %>
-    <%= link_to "#{transaction.id}", transaction_show_path(transaction.id) %>
+    <% @sell_item = Item.find(transaction.item_id) %>
+    <%= link_to "#{@sell_item.name}", transaction_show_path(transaction.id) %>
   <% end %>
 </div>

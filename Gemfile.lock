@@ -99,6 +99,8 @@ GEM
     faker (1.7.3)
       i18n (~> 0.5)
     ffi (1.9.25)
+    font-awesome-rails (4.7.0.4)
+      railties (>= 3.2, < 6.0)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
     hashie (3.5.7)
@@ -259,6 +261,7 @@ DEPENDENCIES
   devise
   devise-bootstrap-views
   faker (= 1.7.3)
+  font-awesome-rails
   jbuilder (= 2.7.0)
   jquery-rails (= 4.3.1)
   listen (>= 3.0.5, < 3.2)
