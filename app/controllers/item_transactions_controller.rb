@@ -2,7 +2,10 @@ class ItemTransactionsController < ApplicationController
 
   def create
     @transaction = ItemTransaction.new(transaction_params)
-    if @transaction.save
+    @item = Item.find(@transaction.item_id)
+    if @transaction.save!
+      @item.update_attribute(:sold, true)
+      @item.save!
       redirect_to transaction_show_path(@transaction.id)
     else
       render root_url
@@ -23,7 +26,7 @@ class ItemTransactionsController < ApplicationController
   private
 
   def transaction_params
-    params.require(:item_transaction).permit(:item_id, :buyer_id, :seller_id)
+    params.require(:item_transaction).permit(:item_id, :seller_id, :buyer_id)
   end
 
 end

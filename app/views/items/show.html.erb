@@ -1,9 +1,9 @@
 <div class="item-show-area panel panel-default">
   <h2 class="panel-heading"><%= @item.name %></h2>
-  <div class="image_area">
-    <%= image_tag @item.image.url if @item.image? %>
-  </div>
   <div class="content_area panel-body">
+    <div class="image_area">
+      <%= image_tag @item.image.url if @item.image? %>
+    </div>
     <span>商品の説明　<span class="item-content-sentence"><%= @item.content %></span></span>
     <h3><%= @item.price %>円</h3>
   </div>
@@ -12,14 +12,20 @@
       <%= time_ago_in_words(@item.created_at) %>前に出品
       出品者 <%= link_to "#{@item.user.username}", user_page_path(@item.user.id) %>さん
     </div>
-    <div class="buy-area">
-      <%= form_for @transaction, url: transaction_path do |f| %>
-        <%= f.hidden_field :item_id, value: @item.id %>
-        <%= f.hidden_field :buyer_id, value: current_user.id %>
-        <%= f.hidden_field :seller_id, value: @item.user.id %>
-        <%= f.submit "予約", class: "btn btn-primary reserve-button", data: { confirm: "予約してよろしいですか？" } %>
-      <% end %>
-    </div>
+    <% if @item.sold == false %>
+      <div class="buy-area">
+        <%= form_for @transaction, url: transaction_path do |f| %>
+          <%= f.hidden_field :item_id, value: @item.id %>
+          <%= f.hidden_field :buyer_id, value: current_user.id %>
+          <%= f.hidden_field :seller_id, value: @item.user.id %>
+          <%= f.submit "予約", class: "btn btn-primary reserve-button", data: { confirm: "予約してよろしいですか？" } %>
+        <% end %>
+      </div>
+    <% else %>
+      <div class="sold-area">
+        <p>この商品は募集していません</p>
+      </div>
+    <% end %>
     <div class="edit-area">
       <% if current_user?(@item.user) %>
       <%= link_to "編集", item_edit_path(@item.id) %>

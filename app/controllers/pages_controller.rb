@@ -1,7 +1,7 @@
 class PagesController < ApplicationController
   include ApplicationHelper
   def index
-    @items = Item.all.paginate(page: params[:page]).search(params[:search])
+    @items = Item.where(sold: false).paginate(page: params[:page]).search(params[:search])
   end
 
   def show

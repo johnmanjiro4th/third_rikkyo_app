@@ -5,13 +5,16 @@
   <div class="panel-body">
     <%= image_tag item.image.url if item.image? %>
     <h3><%= item.price %>円</h3>
-    <span class="user">出品者<%= link_to "#{item.user.username}", user_page_path(item.user.id) %>さん</span>
   </div>
-  <span class="timestamp">
-    <%= time_ago_in_words(item.created_at) %>前に出品
-  </span>
-  <span class="item-show"><%= link_to "詳しく見る", item_show_path(item.id) %></span>
-  <% if current_user?(item.user) %>
-    <%= link_to "削除", item, method: :delete, :class => "delete-button", data: { confirm: "本当に削除しますか？" } %>
-  <% end %>
+  <div class="panel-footer">
+    <span class="timestamp">
+      <span class="user">出品者<%= link_to "#{item.user.username}", user_page_path(item.user.id) %>さん</span>
+      <%= time_ago_in_words(item.created_at) %>前に出品
+    </span>
+    <div class="item-footer-area"><%= link_to "詳しく見る", item_show_path(item.id) %>
+    <% if current_user?(item.user) %>
+      <%= link_to "削除", item, method: :delete, :class => "delete-button", data: { confirm: "本当に削除しますか？" } %>
+    <% end %>
+    </div>
+  </div>
 </li>

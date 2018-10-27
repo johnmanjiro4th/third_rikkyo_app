@@ -1,7 +1,7 @@
 class Item < ApplicationRecord
   belongs_to :user
   has_many :comment, dependent: :destroy
-  has_one :item_transaction, class_name: 'ItemTransaction', dependent: :destroy
+  has_one :item_transaction, dependent: :destroy
   default_scope -> { order(created_at: :desc) }
   mount_uploader :image, ImageUploader
   validates :user_id, presence: true

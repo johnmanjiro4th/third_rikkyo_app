@@ -1,6 +1,6 @@
 <%= form_for(@item) do |f| %>
   <%= render 'items/error_message' %>
-  <div class="field"s>
+  <div class="field">
     <ul class="new_form_area">
       <li>画像<%= f.file_field :image %></li>
       <li>商品名<%= f.text_field :name, placeholder: "商品名を正確に記入してください" %></li>

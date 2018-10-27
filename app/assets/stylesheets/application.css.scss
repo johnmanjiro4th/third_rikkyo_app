@@ -125,37 +125,67 @@ footer {
     border-radius: 20%;
   }
 }
+li.item-index {
+  div.content {
+    h3 {
+      text-align: center;
+      margin-top: 10px;
+    }
+  }
+  div.panel-body {
+    text-align: center;
+  }
+  .item-footer-area {
+    text-align: right;
+  }
+}
 
 /* item-show */
-h2.panel-heading {
-  margin-top: 0;
-}
-.item-content-sentence {
-  font-size: 20px;
-}
-.edit-area {
-  text-align: right;
-}
-.buy-area {
-  text-align: center;
-  .reserve-button {
-    width: 150px;
-    height: 55px;
-    font-size: 30px;
+.item-show-area {
+  h2.panel-heading {
+    margin-top: 0;
+  }
+  .panel-body {
+    text-align: center;
+    .item-content-sentence {
+      font-size: 20px;
+    }
+  }
+  .edit-area {
+    text-align: right;
+  }
+  .buy-area {
+    text-align: center;
+    .reserve-button {
+      width: 150px;
+      height: 55px;
+      font-size: 30px;
+    }
+  }
+  .sold-area {
+    text-align: center;
+    p {
+      font-size: 20px;
+    }
+  }
+  .comment-form-area {
+    input#comment_body {
+      width: 300px;
+      height: 40px;
+      margin-right: 20px;
+    }
+    .field {
+      float: left;
+    }
+    input.btn {
+      height: 40px;
+    }
   }
 }
-.comment-form-area {
-  input#comment_body {
-    width: 300px;
-    height: 40px;
-    margin-right: 20px;
-  }
-  .field {
-    float: left;
-  }
-  input.btn {
-    height: 40px;
-  }
+
+/* item-new */
+.new_form_area {
+  list-style: none;
 }
 
 /* item-index */

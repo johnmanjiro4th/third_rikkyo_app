@@ -1,11 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  item_transaction_id: one
-  user_id: one
+  item_transaction: one
+  user: one
   body: MyText
 
 two:
-  item_transaction_id: two
-  user_id: two
+  item_transaction: two
+  user: two
   body: MyText
