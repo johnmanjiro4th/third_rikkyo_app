@@ -1,12 +1,29 @@
 <%= form_for(@item) do |f| %>
   <%= render 'items/error_message' %>
-  <div class="field">
-    <ul class="new_form_area">
-      <li>画像<%= f.file_field :image %></li>
-      <li>商品名<%= f.text_field :name, placeholder: "商品名を正確に記入してください" %></li>
-      <li>説明<%= f.text_area :content, placeholder: "商品の説明を記入してください" %></li>
-      <li>値段<%= f.number_field :price, placeholder: "金額を半角数字で入力してください" %></li>
-    </ul>
+  <div class="item-new-field">
+    <div class="panel panel-default">
+      <div class="panel-heading">出品用入力フォーム</div>
+      <div class="panel-body">
+        <div class="form-group">
+          <label class="control-label">画像</label>
+          <%= f.file_field :image %>
+        </div>
+        <div class="form-group">
+          <label class="control-label">商品名</label>
+          <%= f.text_field :name, :class => "form-control", placeholder: "商品名を正確に記入してください" %>
+        </div>
+        <div class="form-group">
+          <label class="control-label">説明</label>
+          <%= f.text_area :content, :class => "form-control instraction-area", placeholder: "商品の説明を記入してください" %>
+        </div>
+        <div class="form-group">
+          <label class="control-label">値段（円）</label>
+          <%= f.number_field :price, :class => "form-control", placeholder: "金額を半角数字で入力してください" %>
+        </div>
+      </div>
+      <div class="panel-footer item-new-footer">
+        <%= f.submit "出品する", class: "btn btn-primary", data: { confirm: "出品してよろしいですか？" } %>
+      </div>
+    </div>
   </div>
-  <%= f.submit "Post", class: "btn btn-primary", data: { confirm: "出品してよろしいですか？" } %>
 <% end %>

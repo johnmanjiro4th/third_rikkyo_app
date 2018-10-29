@@ -29,7 +29,7 @@
     <div class="edit-area">
       <% if current_user?(@item.user) %>
       <%= link_to "編集", item_edit_path(@item.id) %>
-      <%= link_to "削除", @item, method: :delete, data: { confirm: "本当に削除しますか？" } %>
+      <%= link_to "削除", @item, method: :delete, data: { confirm: "本当に削除しますか？　一度削除すると元には戻せません。" } %>
       <% end %>
     </div>
   </div>

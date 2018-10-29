@@ -13,7 +13,7 @@
     </span>
     <div class="item-footer-area"><%= link_to "詳しく見る", item_show_path(item.id) %>
     <% if current_user?(item.user) %>
-      <%= link_to "削除", item, method: :delete, :class => "delete-button", data: { confirm: "本当に削除しますか？" } %>
+      <%= link_to "削除", item, method: :delete, :class => "delete-button", data: { confirm: "本当に削除しますか？　一度削除すると元には戻せません。" } %>
     <% end %>
     </div>
   </div>
